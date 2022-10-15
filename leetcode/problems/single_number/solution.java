@@ -1,9 +1,16 @@
 class Solution {
     public int singleNumber(int[] nums) {
-        int xor=0;
-        for(int x:nums){
-            xor^=x;
+        HashSet<Integer> set = new HashSet<Integer>();
+        for(int x: nums){
+            if(set.contains(x)){
+                set.remove(x);
+            }else{
+                set.add(x);
+            }
         }
-        return xor;
+        for(int x:set){
+            return x;
+        }
+        return -1;
     }
 }
